@@ -19,12 +19,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h4>{{category.name}} </h4>
+            <h4>{{category.name}} </h4><hr>
             <div class="row">
                 {% for item in product %}
                 <div class="col-md-4">
                     <div class="card">
-                        <a href="#">
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
                         <div class="card-body">
                             <div class="category-image">
                                 <img src="{{ item.product_image.url }}" alt="productimage" width="200" height="200"> 
