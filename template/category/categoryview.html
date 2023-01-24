@@ -1,0 +1,46 @@
+{% extends 'blog/main.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="py-3 bg-primary">
+        <div class="container">
+            <a class="text-white" href="{% url 'home' %}">Home/</a>                 
+            <a class="text-white" href="{% url 'collection' %}">Category/</a>   
+            <a class="text-white" href="{% url 'collectionview' category.slug %}">{{category.name}}</a>              
+        </div>
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>{{category.name}} </h4>
+            <div class="row">
+                {% for item in product %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <a href="#">
+                        <div class="card-body">
+                            <div class="category-image">
+                                <img src="{{ item.product_image.url }}" alt="productimage" width="200" height="200"> 
+                            </div>
+                            <h4>{{item.name}}</h4>
+                            <span class="float-start">Rs: {{item.original_price|stringformat:'d'}}</span>
+                            <span class="float-end">Rs: {{item.selling_price|stringformat:'d'}}</span>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}
+</body>
+</html>
